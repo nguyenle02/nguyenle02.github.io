@@ -1,0 +1,17 @@
+# Mẫu i18n map — ĐÂY LÀ FILE BẠN PHẢI TỰ SOẠN (điền, đừng xoá)
+# Một dòng = một đơn vị nội dung. Đây là NGUỒN DUY NHẤT để sinh hreflang,
+# tuyệt đối không code hreflang thủ công cho 400+ URL.
+#
+# id                 : slug ổn định, dùng làm khoá
+# lang_primary       : en | vi
+# slug_en / url_en   : bản tiếng Anh (để trống nếu bài chỉ có 1 ngôn ngữ)
+# slug_vi / url_vi   : bản tiếng Việt
+# en_au_url          : nếu có trang dành riêng cho thị trường Úc
+# vn_domain_url      : nếu có trang trên ptemagic.com.vn
+# lastmod_en/lastmod_vi : NGÀY SỬA NỘI DUNG THẬT (không phải ngày build)
+# status             : live | pending-migration | single-language
+# note               : ghi chú migration / cannibalisation
+id,lang_primary,slug_en,url_en,slug_vi,url_vi,en_au_url,vn_domain_url,lastmod_en,lastmod_vi,status,note
+pte-essay-topics,en,pte-essay-topics,https://ptemagic.com/pte-essay-topics,,,,,2026-09-02,,single-language,"bản VI nên tách riêng, không dịch 1:1"
+features,en,features,https://ptemagic.com/features,features,https://ptemagic.com/vi/features,,,2026-09-29,2026-09-29,live,"cặp hreflang hoàn chỉnh"
+pte-core-reorder-paragraph,en,pte-core-reorder-paragraph-format-tips-to-score-high,https://ptemagic.com/pte-core-reorder-paragraph-format-tips-to-score-high,cau-truc-va-meo-dat-diem-cao-pte-core-reorder-paragraph,https://ptemagic.com/cau-truc-va-meo-dat-diem-cao-pte-core-reorder-paragraph,,,2025-02-27,2025-02-27,pending-migration,"CẢNH CÁO: bản VI nằm ở root của .com, phải về /vi/ trước khi khai hreflang (issues.I18N-ARCH)"

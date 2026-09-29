@@ -1,0 +1,254 @@
+# =============================================================================
+# Hồ sơ site PTE Magic — mọi skill/agent/script đều đọc file này trước tiên
+# Cập nhật: 2026-09-29 · Nguồn dữ liệu: crawl thật ptemagic.com + sitemap.xml
+# =============================================================================
+
+business:
+  name: "PTE Magic"
+  legal_name: "PTE Magic Practice Platform"
+  type: "edtech-saas"                 # edtech + freemium SaaS + publisher (blog)
+  model: "freemium: practice platform miễn phí → khoá học/trả phí"
+  primary_kpi: "sign_up_free"         # KHÔNG phải traffic. Mọi quyết định quy về KPI này.
+  secondary_kpis: ["mock_test_completed", "course_purchase", "organic_non_brand_clicks"]
+  audiences:
+    - "Người Việt luyện PTE để du học/định cư Úc, Canada, NZ, UK"
+    - "Du học sinh quốc tế (Ấn Độ, Philippines, Trung Quốc, Pakistan, Thái Lan, Brazil, Nga)"
+    - "Y tá cần PTE để đăng ký hành nghề (nursing registration)"
+    - "Người xin skilled migration cần 65/79+"
+  trust_assets:                       # <-- dùng cho E-E-A-T và digital PR, KHÔNG bịa thêm
+    - "Pearson's Elite Partner 2025"
+    - "Promising Education Technology Award 2023 — Edu 4.0"
+    - "Member of the Vietnam – Australia EdTech Alliance"
+    - "Top 10 EdTechList — Bett Asia"
+    - "Top 20 thương hiệu giáo dục 2023 (chỉ nêu ở bản VI)"
+  proof_points:                       # số liệu đang dùng trên site — cần verify trước khi tái sử dụng
+    - value: "400,000+ students"
+      source: "homepage EN + VI"
+      last_verified: "2026-09-29"
+    - value: "200+ partner institutions"
+      source: "homepage EN + VI"
+      last_verified: "2026-09-29"
+    - value: "60+ countries served"
+      source: "homepage EN + VI"
+      last_verified: "2026-09-29"
+    - value: "8,000+ exam-style questions"
+      source: "homepage EN + VI"
+      last_verified: "2026-09-29"
+  unique_data_assets:                 # thứ ĐỐI THỦ KHÔNG CÓ — bắt buộc dùng trong content
+    - "Dữ liệu chấm điểm AI (speaking/writing) trên 400.000+ học viên"
+    - "Ngân hàng 8.000+ câu hỏi dạng đề thi thật theo format Pearson"
+    - "Template do trainer viết, đã kiểm chứng qua học viên đạt 79–90"
+    - "Báo cáo điểm mock test chi tiết từng kỹ năng (có ảnh chụp thật)"
+
+# -----------------------------------------------------------------------------
+# Kiến trúc domain & locale — ĐANG CÓ VẤN ĐỀ, xem issues.open_decisions[0]
+# -----------------------------------------------------------------------------
+site:
+  primary_domain: "ptemagic.com"
+  scheme: "https"
+  www: false
+  stack: "Next.js (App/Pages router, dùng /_next/image) + WordPress headless tại cms.ptemagic.com"
+  locales:
+    - code: "en"
+      hreflang: "en"
+      urls: ["https://ptemagic.com/"]
+      note: "Bản mặc định, audience quốc tế"
+    - code: "vi"
+      hreflang: "vi"
+      urls: ["https://ptemagic.com/vi"]
+      note: "Subfolder trên .com — có /vi/features, /vi/blogs, /vi/contact-us, /vi/exam-structure-*"
+    - code: "vi-vn-domain"
+      hreflang: "vi"
+      urls: ["https://ptemagic.com.vn/"]
+      note: "Domain riêng 'Vietnamese PTE Coaching' — link từ footer .com"
+    - code: "en-au-domain"
+      hreflang: "en-au"
+      urls: ["https://ptemagic.com.au/"]
+      note: "Domain riêng 'International PTE Coaching' — link từ footer .com"
+  x_default: "https://ptemagic.com/"
+
+  # Các path đặc biệt
+  blog_index: "https://ptemagic.com/blogs"
+  blog_category_pattern: "https://ptemagic.com/blogs?page=1&categoryIds={id}"
+  categories:
+    10: "PTE Listening"
+    14: "PTE Reading"
+    18: "PTE Speaking"
+    22: "PTE Writing"
+    null: "General / Life in Australia / Life in Canada / Life in New Zealand / Life in United Kingdom / News / PTE Core"
+    note: "ID 10/14/18/22 lấy từ link footer thật; các category còn lại chưa lộ ID — cần crawl để điền"
+  static_pages:
+    - "/exam-structure-pte-academic"
+    - "/exam-structure-pte-core"
+    - "/features"
+    - "/contact-us"
+    - "/privacy-policy"
+    - "/blogs"
+  app_paths_must_noindex:            # app có login, không được index
+    - "/sso/*"
+    - "/dashboard/*"
+    - "/practice/*"
+    - "/mock-test/*"
+    - "/result/*"
+  sitemap: "https://ptemagic.com/sitemap.xml"
+  robots_txt: "https://ptemagic.com/robots.txt"
+  cms_image_origin: "https://cms.ptemagic.com/wp-content/uploads/"
+  image_proxy_pattern: "/_next/image?url={encoded}&w={width}&q={quality}"
+
+# -----------------------------------------------------------------------------
+# Search Console / Analytics
+# -----------------------------------------------------------------------------
+data_sources:
+  gsc:
+    properties:
+      - "https://ptemagic.com/"       # URL-prefix
+      - "sc-domain:ptemagic.com"      # domain property (nếu đã verify)
+    default_days: 90
+  ga4:
+    property_id: "FILL_ME"            # ví dụ 123456789
+    key_conversions: ["sign_up", "start_free", "purchase_course"]
+  crux:
+    origin: "https://ptemagic.com/"
+  pagespeed:
+    strategies: ["mobile", "desktop"]
+    priority_urls:                    # đo trước, đừng đo cả site
+      - "https://ptemagic.com/"
+      - "https://ptemagic.com/vi"
+      - "https://ptemagic.com/blogs"
+      - "https://ptemagic.com/features"
+      - "https://ptemagic.com/pte-essay-topics"
+      - "https://ptemagic.com/exam-structure-pte-core"
+
+# -----------------------------------------------------------------------------
+# Đối thủ — DANH SÁCH ỨNG VIÊN, PHẢI VERIFY BẰNG AHREFS/SIMILARWEB TRƯỚC KHI DÙNG
+# (agent KHÔNG được tự coi đây là sự thật; ghi rõ confidence)
+# -----------------------------------------------------------------------------
+competitors:
+  verification_status: "unverified_candidate_list"
+  verify_with: "Ahrefs → Organic competitors của ptemagic.com; Similarweb → similar sites"
+  global:
+    - {domain: "e2language.com",       why: "PTE + IELTS prep lớn, mạnh content hub"}
+    - {domain: "alfapte.com",          why: "PTE prep, mạnh ở thị trường Ấn Độ/Việt Nam"}
+    - {domain: "languageacademy.in",   why: "PTE India, content task-level rất dày"}
+    - {domain: "gurully.com",          why: "PTE practice platform, đối thủ trực tiếp về mock test"}
+    - {domain: "apeuni.com",           why: "PTE practice app, cộng đồng lớn"}
+  vietnam:
+    - {domain: "ptemagic.com.vn",      why: "Chính domain của PTE Magic — phải xử lý như i18n, không phải đối thủ"}
+    - {domain: "ptehelper.edu.vn",     why: "Ứng viên — cần verify"}
+  note: >
+    Nếu sau khi verify mà danh sách khác, sửa file này và commit. Mọi skill đọc competitor
+    đều phải in ra verification_status để người dùng biết dữ liệu đáng tin tới đâu.
+
+# -----------------------------------------------------------------------------
+# Ngưỡng chất lượng & kỹ thuật — điều chỉnh ở đây, không sửa trong code
+# -----------------------------------------------------------------------------
+thresholds:
+  on_page:
+    title_min: 30
+    title_max: 60
+    meta_desc_min: 70
+    meta_desc_max: 155
+    h1_count_exact: 1
+    h2_min_informational: 4
+    words_min_informational: 1200
+    words_min_transactional: 600
+    keyword_density_max: 0.035        # 3.5% — trên mức này = BLOCK (keyword stuffing)
+    keyword_in_heading_ratio_max: 0.60
+    internal_links_min: 4
+    images_alt_required_pct: 100
+  core_web_vitals:                    # ngưỡng Google 2026 (INP thay FID từ 12/03/2024)
+    lcp_good_ms: 2500
+    lcp_poor_ms: 4000
+    inp_good_ms: 200
+    inp_poor_ms: 500
+    cls_good: 0.10
+    cls_poor: 0.25
+    ttfb_good_ms: 800
+    next_image_max_width_for_card: 768    # phát hiện: site đang dùng w=3840 cho card
+    next_image_max_width_for_hero: 1920
+  policy_gate:
+    near_duplicate_jaccard_block: 0.70    # >= 70% giống bài đã có → BLOCK
+    near_duplicate_jaccard_warn: 0.50
+    shingle_size: 5
+    template_shell_min_urls: 8
+    template_shell_body_delta_min: 0.30
+    outbound_exact_match_anchor_max: 0.40
+    ymyl_requires_author: true
+    ymyl_requires_date: true
+    ymyl_max_days_since_update: 90
+  audit:
+    max_urls_default: 200
+    max_urls_full: 800
+    crawl_delay_sec: 0.5
+    respect_robots: true
+
+# -----------------------------------------------------------------------------
+# YMYL — nội dung nhạy cảm, yêu cầu E-E-A-T cao hơn
+# -----------------------------------------------------------------------------
+ymyl:
+  topics:
+    - "visa / immigration / permanent residency"
+    - "học bổng, học phí, chi phí sinh hoạt, vay du học"
+    - "yêu cầu điểm PTE cho nursing registration / skilled migration"
+    - "thay đổi chính sách của chính phủ"
+  url_patterns:                       # phát hiện từ sitemap thật
+    - "*visa*"
+    - "*permanent-resident*"
+    - "*scholarship*"
+    - "*student-loan*"
+    - "*cost-of-living*"
+    - "*post-study-work*"
+    - "*post-graduate-work-permit*"
+    - "*accepted-countries-for-nurses*"
+  mandatory:
+    - "author có tên thật + profile page"
+    - "ngày updated trong 90 ngày"
+    - "link tới nguồn chính phủ chính thức"
+    - "không khẳng định chắc chắn kết quả visa"
+  official_sources:
+    australia: "https://immi.homeaffairs.gov.au"
+    canada: "https://www.canada.ca/en/immigration-refugees-citizenship.html"
+    new_zealand: "https://www.immigration.govt.nz"
+    uk: "https://www.gov.uk/browse/visas-immigration"
+    pearson_pte: "https://www.pearsonpte.com"
+
+# -----------------------------------------------------------------------------
+# Việc đang mở — cập nhật mỗi lần audit
+# -----------------------------------------------------------------------------
+issues:
+  open_decisions:
+    - id: "I18N-ARCH"
+      severity: "critical"
+      title: "Chốt kiến trúc i18n"
+      detail: >
+        Đang tồn tại song song 3 cách phục vụ nội dung tiếng Việt: (a) /vi/ subfolder trên .com,
+        (b) bài blog tiếng Việt nằm ở ROOT của .com (vd /nhung-thay-doi-ve-diem-thi-pte-quan-trong-nam-2024),
+        (c) domain riêng ptemagic.com.vn. Ba cách này dẫm chân nhau: Google không biết bản nào
+        canonical, hreflang không thể khai báo nhất quán, và có nguy cơ duplicate cross-domain.
+      options:
+        - "A: Gộp hết VI về /vi/ trên .com, 301 từ .com.vn → đơn giản nhất, mất authority domain .com.vn"
+        - "B: Giữ .com.vn làm bản VI chính, xoá /vi/ và các bài VI trên .com → rõ ràng theo quốc gia, tốn công migrate"
+        - "C: .com = EN toàn cầu, /vi/ = VI toàn cầu, .com.vn = chỉ landing khoá học VN → cần hreflang rất kỷ luật"
+      recommended: "A hoặc C. Tuyệt đối không giữ nguyên trạng thái hiện tại."
+      owner: "SEO + Dev"
+    - id: "BLOG-URL"
+      severity: "high"
+      title: "Bài blog nằm ở root, không có prefix /blogs/"
+      detail: >
+        Toàn bộ ~120 bài blog dùng https://ptemagic.com/<slug> thay vì /blogs/<slug>.
+        Không phải lỗi, nhưng làm mất ngữ cảnh thư mục và khiến việc tách sitemap/section khó.
+      recommended: "Không migrate hàng loạt (rủi ro > lợi ích). Giữ nguyên, nhưng bài MỚI nên cân nhắc nhất quán."
+      owner: "SEO"
+  known_findings_from_initial_audit:
+    - "Ảnh: /_next/image với w=3840 cho cả hero lẫn thumbnail blog → LCP mobile rủi ro cao"
+    - "Trang chủ EN và /vi có nhiều hơn 1 heading cấp 1 (biến thể mobile/desktop cùng nằm trong DOM)"
+    - "/vi: khối testimonial (Thảo Nguyên, Tấn Thịnh, Phương Quỳnh) lặp nguyên văn 2 lần"
+    - "sitemap.xml: lastmod của các trang chính = 2026-09-29T03:35:53.482Z (thời điểm build), không phải ngày sửa nội dung"
+    - "Footer: 'Privacy Policy' và 'Payment & Refund Policy' trỏ về CÙNG URL /privacy-policy"
+    - "Title /blogs = 'PTE Magic - PTE Magic Blog' (lặp brand, không có keyword)"
+    - "Category link dùng query param /blogs?page=1&categoryIds=X — cần canonical + kiểm tra index"
+    - "Trên /blogs, tiêu đề bài viết KHÔNG phải là anchor; chỉ ảnh mới là link"
+    - "Alt text ảnh thumbnail có vẻ lệch so với bài viết tương ứng (cần verify bằng HTML)"
+    - "Ảnh phục vụ từ cms.ptemagic.com (WordPress) qua /_next/image — thêm 1 hop, cần kiểm tra cache"
+    - "robots.txt chỉ có 'User-Agent: * / Allow: /' — chưa khai báo AI crawler, chưaDisallow /sso/"
+    - "Chưa có llms.txt (cần verify)"

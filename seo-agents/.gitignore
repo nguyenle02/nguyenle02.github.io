@@ -1,0 +1,37 @@
+# Secrets
+.env
+.env.*
+!.env.example
+*.pem
+*-service-account.json
+credentials/
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Dữ liệu chạy ra (không commit — có thể chứa dữ liệu khách hàng)
+data/*
+# ...ngoại lệ: file MẪU và scaffold mà tài liệu tham chiếu tới, phải có trong repo
+!data/.gitkeep
+!data/*.example.csv
+!data/backlog.md
+.cache/
+*.log
+
+# Output thô từ API (giữ .md báo cáo, bỏ .json nặng)
+reports/**/*.json
+reports/ptemagic/raw/
+
+# Drafts của khách — không public
+drafts/
+published/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

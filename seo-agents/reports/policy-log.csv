@@ -1,0 +1,4 @@
+checked_at,file,title,verdict,blocks,warns,words,ymyl,codes
+# File log cho scripts/policy_gate.py --log. Giữ dòng header; các dòng dưới do script append.
+# Xu hướng số BLOCK giảm theo tháng = quy trình đang chín. Số BLOCK tăng = ai đó đang
+# sản xuất nội dung nhanh hơn tốc độ biên tập.

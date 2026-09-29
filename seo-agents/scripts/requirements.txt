@@ -1,0 +1,15 @@
+# Core (bắt buộc)
+requests>=2.31
+beautifulsoup4>=4.12
+PyYAML>=6.0
+
+# Tăng tốc parse HTML (optional, bs4 tự fallback sang html.parser)
+lxml>=5.0
+
+# Chỉ cần khi dùng scripts/gsc_pull.py và scripts/ga4_pull.py
+google-api-python-client>=2.100
+google-auth>=2.23
+google-auth-httplib2>=0.1.1
+
+# Chỉ cần khi muốn đo Core Web Vitals bằng browser thật (scripts/cwv_browser.py)
+# playwright>=1.44   # sau khi cài: playwright install chromium

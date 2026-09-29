@@ -1,0 +1,65 @@
+[
+  {
+    "url": "https://ptemagic.com/",
+    "file": "home.html",
+    "status": 200,
+    "headers": {
+      "content-type": "text/html; charset=utf-8",
+      "strict-transport-security": "max-age=31536000"
+    }
+  },
+  {
+    "url": "https://ptemagic.com/vi",
+    "file": "vi.html",
+    "status": 200,
+    "headers": {
+      "content-type": "text/html; charset=utf-8",
+      "strict-transport-security": "max-age=31536000"
+    }
+  },
+  {
+    "url": "https://ptemagic.com/blogs",
+    "file": "blog-list.html",
+    "status": 200,
+    "headers": {
+      "content-type": "text/html; charset=utf-8",
+      "strict-transport-security": "max-age=31536000"
+    }
+  },
+  {
+    "url": "https://ptemagic.com/pte-essay-topics",
+    "file": "post-en.html",
+    "status": 200,
+    "headers": {
+      "content-type": "text/html; charset=utf-8",
+      "strict-transport-security": "max-age=31536000"
+    }
+  },
+  {
+    "url": "https://ptemagic.com/pte-essay-topics-canada",
+    "file": "post-en-near.html",
+    "status": 200,
+    "headers": {
+      "content-type": "text/html; charset=utf-8",
+      "strict-transport-security": "max-age=31536000"
+    }
+  },
+  {
+    "url": "https://ptemagic.com/nhung-thay-doi-ve-diem-thi-pte-quan-trong-nam-2024",
+    "file": "post-vi-root.html",
+    "status": 200,
+    "headers": {
+      "content-type": "text/html; charset=utf-8",
+      "strict-transport-security": "max-age=31536000"
+    }
+  },
+  {
+    "url": "https://ptemagic.com/features",
+    "file": "no-canonical.html",
+    "status": 200,
+    "headers": {
+      "content-type": "text/html; charset=utf-8",
+      "strict-transport-security": "max-age=31536000"
+    }
+  }
+]
